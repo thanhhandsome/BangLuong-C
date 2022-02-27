@@ -1,0 +1,52 @@
+﻿@model ThaiChauThanh_592.Models.bangluong
+
+@{
+    ViewBag.Title = "FormXoaBangLuong";
+    Layout = "~/Views/_LayoutPage1 (1).cshtml";
+}
+
+<h2>Form xóa bảng lương</h2>
+@Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-primary" })
+<div>
+    <h4>bangluong</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.luongky)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.luongky)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tungay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tungay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.denngay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.denngay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nguoilap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nguoilap)
+        </dd>
+
+    </dl>
+    <h3>@ViewBag.message</h3>
+    @if (ViewBag.isDelete == true)
+    {
+        @Html.ActionLink("Xóa", "XoaBangLuong", new { id = Model.luongky }, new { @class = "btn btn-primary" })
+    }
+
+</div>

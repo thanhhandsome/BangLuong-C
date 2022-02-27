@@ -1,0 +1,50 @@
+﻿@model ThaiChauThanh_592.Models.chitietbangluong
+
+@{
+    ViewBag.Title = "FormThemCTBL";
+    Layout = "~/Views/_LayoutPage1 (1).cshtml";
+}
+
+<h2>Form Thêm Chi Tiết Bảng Lương</h2>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@using (Html.BeginForm("xuliThem", "Home", FormMethod.Post)) 
+{
+                @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+    <h4>chitietbangluong</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.luongky, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.luongky, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.luongky, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.manc, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.manc, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.manc, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.songaycong, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.songaycong, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.songaycong, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Thêm" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+

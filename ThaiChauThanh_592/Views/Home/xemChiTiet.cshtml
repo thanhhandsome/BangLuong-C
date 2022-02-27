@@ -1,0 +1,100 @@
+﻿@model ThaiChauThanh_592.Models.bangluong
+
+@{
+    ViewBag.Title = "xemChiTiet";
+    Layout = "~/Views/_LayoutPage1 (1).cshtml";
+}
+
+<h2>Thông tin bảng lương</h2>
+<p>
+    @Html.ActionLink("Trở về", "Index")
+    @Html.ActionLink("Thêm Chi tiết bảng lương", "FormThemCTBL", new { id = Model.luongky }) |
+</p>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.luongky)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.luongky)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.tungay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tungay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.denngay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.denngay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nguoilap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nguoilap)
+        </dd>
+
+    </dl>
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th>Lương kỳ</th>
+                <th>Mã nhân công</th>
+                <th>Tên nhân công</th>
+                <th>Phái</th>
+                <th>Ngày sinh</th>
+                <th>Đơn giá</th>
+                <th>Số ngày công</th>
+                <th>Tiền lương</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.chitietbangluongs)
+            {
+                <tr class="text-center">
+                    <td>@item.luongky</td>
+                    <td>@item.manc</td>
+                    <td>@item.nhancong.tennc</td>
+                    <td>
+                        @{
+                            string phai = "";
+                            if (item.nhancong.phai == true)
+                            {
+                                phai = "Nam";
+                            }
+                            else
+                            {
+                                phai = "Nữ";
+                            }
+                        }
+                        @phai
+                    </td>
+
+                    <td>
+                        @{
+                            string strngaysinh = item.nhancong.ngaysinh.Value.ToString("dd/MM/yyyy");
+                        }
+                        @strngaysinh
+                    </td>
+                    <td>@item.dongia</td>
+                    <td>@item.songaycong</td>
+                    <td>@(item.dongia * item.songaycong)</td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.luongky }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Xóa", "Xoa", new { id = item.luongky }, new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
